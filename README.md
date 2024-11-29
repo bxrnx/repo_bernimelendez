@@ -1,1 +1,1 @@
-# repo_bernimelendez
+"Aquel que es valiente es libre“ ~ Séneca & "El hombre es libre si sólo tiene que obedecer a las leyes y no a las personas" ~ Friedrich August von Hayek  --> "Aquel que es valiente, no obecede a nadie más que a si mismo".
