@@ -1,0 +1,32 @@
+# Definición de etapas
+stages:
+  - cypress
+  - postman
+
+# Pruebas de Cypress
+cypress-tests:
+  stage: cypress
+  image: cypress/included:12.0.0 # Herramientas necesarias para ejecutar tus pruebas, sin necesidad de instalarlas manualmente en tu servidor o máquina.
+  script:
+    - echo "Ejecutando pruebas de cypress..."
+    - npx cypress run
+
+artifacts:
+  paths:
+    - cypress/videos
+    - cypress/screenshots
+  when: always
+
+# Pruebas de Postman
+  postman-tests:
+    stage: postman
+    image: postman/newman:alpine
+    script:
+      - echo "Ejecutando pruebas de Postman..."
+      - newman run Rick\ and\ Morty\ API.postman_collection.json
+
+artifacts:
+  paths:
+    - newman/
+  when: always
+
