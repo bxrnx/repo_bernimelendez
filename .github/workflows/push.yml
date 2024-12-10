@@ -6,24 +6,23 @@ on:
       - main # Activa el pipeline cuando se realiza un push en la rama main
   pull_request:
     branches:
-      - main # Activa el pipeline cuando se realiza un pull en la rama main
+      - main # Activa el pipeline cuando se realiza un pull request hacia la rama main
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2 # Clona el repositorio
 
-      steps:
-        - name: Checkout repository
-          uses: actions/setup-node@v2 # Clona el repositorio
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # Define la versión de Node.js (en este caso 14)
 
-        - name: Set up Node.js
-          uses: actions/setup-node@v2
-          with:
-            node-version: '14' # Define la versión de node (en este caso 14)
+      - name: Install dependencies
+        run: npm install # Instala las dependencias del proyecto
 
-        - name: Install dependencies
-          run: npm install # Instala las dependencias del proyecto
-
-        -name: Run tests
-         run: npm test # Ejecuta los tests
+      - name: Run tests
+        run: npm test # Ejecuta los tests
